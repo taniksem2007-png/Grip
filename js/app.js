@@ -37,20 +37,18 @@
     card.appendChild(media);
 
     var body = el("div", "product-body");
-    if (product.badge) body.appendChild(el("p", "eyebrow", product.badge));
     body.appendChild(el("h3", "product-name", product.name));
-    body.appendChild(el("p", "product-volume", product.volume));
-    body.appendChild(el("p", "product-short", product.short));
-    body.appendChild(el("p", "product-purpose", product.purpose));
-
-    var sportsWrap = el("div", "sports");
-    sportsWrap.appendChild(el("p", "sports-kicker", "Для всех видов спорта"));
-    var list = el("ul", "sports-list");
-    (product.sports || []).forEach(function (sport) {
-      list.appendChild(el("li", "", sport));
-    });
-    sportsWrap.appendChild(list);
-    body.appendChild(sportsWrap);
+    if (product.volume) {
+      body.appendChild(el("p", "product-meta", product.volume));
+    }
+    if (product.purpose) {
+      body.appendChild(el("p", "product-purpose", product.purpose));
+    }
+    if (product.sports && product.sports.length) {
+      body.appendChild(
+        el("p", "product-sports", "Подходит для " + product.sports.join(", ") + ".")
+      );
+    }
 
     if (product.orderable) {
       var actions = el("div", "product-actions");
