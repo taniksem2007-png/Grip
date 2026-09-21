@@ -6,6 +6,8 @@
   --ink: #23170f;
   --rock: #6d6458;
   --rust: #c24b2a;
+  --fill-vibrant-primary: #c24b2a;
+  --retro-blue: #6a9eb8;
   --pine: #2f4a3a;
   --cream: #f3efe4;
   --shadow: rgba(35, 23, 15, 0.18);
@@ -74,23 +76,62 @@ a {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
   text-decoration: none;
+  color: var(--fill-vibrant-primary);
 }
 
-.brand img {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--ink);
-}
-
-.brand-name {
+.grip-mark {
+  display: inline-block;
   font-family: "Irish Grover", cursive;
-  font-size: 34px;
-  line-height: 0.8;
+  font-weight: 400;
+  line-height: 0.82;
   letter-spacing: 0.02em;
+  color: var(--fill-vibrant-primary);
+}
+
+.grip-i {
+  position: relative;
+}
+
+.grip-peaks {
+  position: absolute;
+  left: 50%;
+  top: -0.16em;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  height: 0.22em;
+  pointer-events: none;
+}
+
+.grip-peaks b {
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent transparent currentColor;
+}
+
+.grip-peaks b:nth-child(1) {
+  border-width: 0 0.075em 0.16em;
+}
+
+.grip-peaks b:nth-child(2) {
+  border-width: 0 0.08em 0.2em;
+  margin: 0 -0.012em;
+}
+
+.grip-peaks b:nth-child(3) {
+  border-width: 0 0.07em 0.14em;
+}
+
+.brand .grip-mark {
+  font-size: 38px;
+}
+
+.hero .grip-mark {
+  font-size: clamp(72px, 14vw, 148px);
+  color: var(--cream);
 }
 
 .nav {
