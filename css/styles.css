@@ -96,11 +96,12 @@ a {
 .grip-peaks {
   position: absolute;
   left: 50%;
-  top: -0.16em;
+  top: auto;
+  bottom: calc(100% - 0.05em);
   transform: translateX(-50%);
   display: flex;
   align-items: flex-end;
-  height: 0.22em;
+  height: 0.2em;
   pointer-events: none;
 }
 
@@ -127,6 +128,7 @@ a {
 
 .brand .grip-mark {
   font-size: 38px;
+  padding-top: 0.2em;
 }
 
 .hero .grip-mark {
@@ -161,35 +163,26 @@ a {
   background-image: linear-gradient(180deg, rgba(20, 16, 12, 0.08), rgba(20, 16, 12, 0.55)), url("../images/hero-poster.png");
   color: var(--cream);
   display: grid;
-  place-items: end start;
+  place-items: end center;
 }
 
 .hero-copy {
-  padding: 48px 40px;
-  max-width: 720px;
+  padding: 56px 40px 48px;
+  max-width: 800px;
+  text-align: center;
 }
 
 .hero h1 {
-  margin: 0;
+  margin: 0 0 16px;
+  padding-top: 0.22em;
   font-family: "Irish Grover", cursive;
   font-size: clamp(72px, 14vw, 148px);
   line-height: 0.82;
   font-weight: 400;
 }
 
-.hero-tag {
-  display: inline-block;
-  margin: 0 0 16px;
-  padding: 8px 14px;
-  border: 1px solid rgba(243, 239, 228, 0.7);
-  font-family: Fraunces, Georgia, serif;
-  font-size: clamp(22px, 3vw, 34px);
-  font-style: italic;
-  background: rgba(35, 23, 15, 0.28);
-}
-
 .hero p {
-  margin: 0;
+  margin: 0 auto;
   max-width: 28em;
   font-size: 18px;
 }
@@ -509,7 +502,7 @@ body.modal-open {
   }
 
   .hero-copy {
-    padding: 28px 20px;
+    padding: 40px 20px 28px;
   }
 
   .product-card,
