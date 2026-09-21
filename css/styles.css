@@ -134,6 +134,7 @@ a {
 .hero .grip-mark {
   font-size: clamp(72px, 14vw, 148px);
   color: var(--cream);
+  text-shadow: 0 2px 16px rgba(35, 23, 15, 0.35);
 }
 
 .nav {
@@ -161,17 +162,17 @@ a {
   overflow: hidden;
   border: 3px solid var(--ink);
   background-color: #8ec3da;
-  background-image: linear-gradient(180deg, rgba(20, 16, 12, 0.08), rgba(20, 16, 12, 0.55)), url("../images/hero-poster.png");
+  background-image: linear-gradient(180deg, rgba(20, 16, 12, 0.04), rgba(20, 16, 12, 0.12) 45%, rgba(20, 16, 12, 0.28)), url("../images/hero-poster.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   color: var(--cream);
   display: grid;
-  place-items: end center;
+  place-items: center;
 }
 
 .hero-copy {
-  padding: 56px 40px 48px;
+  padding: 28px 40px 36px;
   max-width: 800px;
   text-align: center;
 }
@@ -189,6 +190,7 @@ a {
   margin: 0 auto;
   max-width: 28em;
   font-size: 18px;
+  text-shadow: 0 1px 12px rgba(35, 23, 15, 0.4);
 }
 
 .section {
