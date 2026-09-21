@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grip — жидкая спортивная магнезия</title>
+    <meta
+      name="description"
+      content="Grip: жидкая спортивная магнезия для хвата. Для всех видов спорта. Санкт-Петербург."
+    />
+    <link rel="icon" href="images/logo-peaks.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Irish+Grover&family=Manrope:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="#top">
+          <img src="images/logo-peaks.png" alt="Знак Grip" />
+          <span>
+            <span class="brand-name">GRIP</span>
+            <span class="brand-sub">Chalk</span>
+          </span>
+        </a>
+        <nav class="nav">
+          <a href="#catalog">Товары</a>
+          <a href="#wholesale">Опт</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <p class="hero-tag">для всех видов спорта</p>
+          <h1>GRIP</h1>
+          <p class="chalk">Chalk</p>
+          <p>Жидкая магнезия для надёжного хвата — скалы, гриф, пилон, кольца и всё, где руки не должны скользить.</p>
+        </div>
+      </section>
+
+      <section class="section wrap" id="catalog">
+        <div class="section-head">
+          <h2>Товары</h2>
+          <p class="lede">Пока в производстве один продукт. Каталог уже умеет расти: новые карточки добавим, когда появятся следующие товары и фото.</p>
+        </div>
+        <div class="catalog" id="catalog-list"></div>
+      </section>
+
+      <section class="section wrap" id="wholesale">
+        <div class="wholesale">
+          <h2>Заказ оптом</h2>
+          <p>
+            Клубам, залам, секциям и магазинам считаем цену индивидуально — готового оптового прайса нет.
+            Напишите, сколько нужно и для кого, обсудим сроки и стоимость.
+          </p>
+          <a class="btn btn-light" href="mailto:hi@grip-pro.ru?subject=Оптовый заказ Grip">Написать на hi@grip-pro.ru</a>
+        </div>
+      </section>
+
+      <section class="section wrap contacts" id="contacts">
+        <h2>Связаться</h2>
+        <p>Почта для заказов и вопросов: <a href="mailto:hi@grip-pro.ru">hi@grip-pro.ru</a></p>
+        <p>Изготовитель: Семенова Татьяна Борисовна, плательщик НПД, ИНН 784301595214, г. Санкт-Петербург.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer wrap">
+      <p><strong>GRIP</strong> · grip-pro.ru</p>
+      <p>Изготовитель: Семенова Татьяна Борисовна, плательщик НПД, ИНН 784301595214, г. Санкт-Петербург.</p>
+      <p>Почта: <a href="mailto:hi@grip-pro.ru">hi@grip-pro.ru</a> · <span id="year"></span></p>
+    </footer>
+
+    <div class="modal" id="order-modal" hidden>
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="order-heading">
+        <h3 id="order-heading">Заказ</h3>
+        <p id="order-product-title"></p>
+        <p class="modal-note">
+          Онлайн-оплаты на сайте пока нет — так проще и надёжнее на старте.
+          Укажите количество, отправьте заявку, и мы напишем сумму и как оплатить (СБП или перевод).
+        </p>
+        <form id="order-form" class="form-grid">
+          <input type="hidden" id="order-product-id" />
+          <div class="qty-field">
+            <span class="qty-label">Количество</span>
+            <div class="qty-row">
+              <button type="button" class="btn" data-qty-minus aria-label="Меньше">-</button>
+              <input id="order-qty" type="number" min="1" value="1" required />
+              <button type="button" class="btn" data-qty-plus aria-label="Больше">+</button>
+            </div>
+          </div>
+          <label>Имя <input id="order-name" name="name" required autocomplete="name" /></label>
+          <label>Телефон <input id="order-phone" name="phone" required autocomplete="tel" /></label>
+          <label>Почта <input id="order-email" name="email" type="email" required autocomplete="email" /></label>
+          <label>Город <input id="order-city" name="city" required /></label>
+          <label>Комментарий <textarea id="order-comment" rows="3" placeholder="удобное время, самовывоз или доставка"></textarea></label>
+          <div class="modal-actions">
+            <button class="btn btn-primary" type="submit">Отправить заявку</button>
+            <button class="btn" type="button" data-close-modal>Закрыть</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
