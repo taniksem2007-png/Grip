@@ -96,12 +96,12 @@ a {
 .grip-peaks {
   position: absolute;
   left: 50%;
-  top: auto;
-  bottom: calc(100% - 0.05em);
+  top: 0.1em;
+  bottom: auto;
   transform: translateX(-50%);
   display: flex;
   align-items: flex-end;
-  height: 0.2em;
+  height: 0.13em;
   pointer-events: none;
 }
 
@@ -156,11 +156,14 @@ a {
 .hero {
   position: relative;
   min-height: calc(100vh - 80px);
-  margin: 12px 0 64px;
+  margin: 12px auto 64px;
   overflow: hidden;
   border: 3px solid var(--ink);
-  background: #8ec3da center/cover no-repeat;
+  background-color: #8ec3da;
   background-image: linear-gradient(180deg, rgba(20, 16, 12, 0.08), rgba(20, 16, 12, 0.55)), url("../images/hero-poster.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: var(--cream);
   display: grid;
   place-items: end center;
@@ -174,7 +177,7 @@ a {
 
 .hero h1 {
   margin: 0 0 16px;
-  padding-top: 0.22em;
+  padding-top: 0.12em;
   font-family: "Irish Grover", cursive;
   font-size: clamp(72px, 14vw, 148px);
   line-height: 0.82;
