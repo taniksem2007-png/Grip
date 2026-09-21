@@ -155,8 +155,9 @@ a {
 
 .hero {
   position: relative;
-  min-height: calc(100vh - 80px);
-  margin: 12px auto 64px;
+  height: min(42vh, 420px);
+  min-height: 260px;
+  margin: 12px auto 48px;
   overflow: hidden;
   border: 3px solid var(--ink);
   background-color: #8ec3da;
