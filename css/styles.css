@@ -410,6 +410,33 @@ a {
   border: 0;
   border-radius: 999px;
   color: var(--ink);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: none;
+}
+
+.sports-pills.is-in li {
+  animation: pill-in 0.5s ease forwards;
+}
+
+.sports-pills.is-in li:nth-child(1) { animation-delay: 0s; }
+.sports-pills.is-in li:nth-child(2) { animation-delay: 0.04s; }
+.sports-pills.is-in li:nth-child(3) { animation-delay: 0.08s; }
+.sports-pills.is-in li:nth-child(4) { animation-delay: 0.12s; }
+.sports-pills.is-in li:nth-child(5) { animation-delay: 0.16s; }
+.sports-pills.is-in li:nth-child(6) { animation-delay: 0.2s; }
+.sports-pills.is-in li:nth-child(7) { animation-delay: 0.24s; }
+.sports-pills.is-in li:nth-child(8) { animation-delay: 0.28s; }
+.sports-pills.is-in li:nth-child(9) { animation-delay: 0.32s; }
+.sports-pills.is-in li:nth-child(10) { animation-delay: 0.36s; }
+.sports-pills.is-in li:nth-child(11) { animation-delay: 0.4s; }
+.sports-pills.is-in li:nth-child(n + 12) { animation-delay: 0.44s; }
+
+@keyframes pill-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .sports-pills li:nth-child(5n + 1) { background: #f0d3b0; }
@@ -677,8 +704,11 @@ body.modal-open {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-copy,
-  .gallery-track {
+  .gallery-track,
+  .sports-pills li {
     animation: none;
     transition: none;
+    opacity: 1;
+    transform: none;
   }
 }

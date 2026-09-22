@@ -210,4 +210,24 @@
 
   document.getElementById("year").textContent = String(new Date().getFullYear());
   renderCatalog();
+
+  if ("IntersectionObserver" in window) {
+    var pillObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-in");
+          pillObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.35 }
+    );
+    document.querySelectorAll(".sports-pills").forEach(function (list) {
+      pillObserver.observe(list);
+    });
+  } else {
+    document.querySelectorAll(".sports-pills").forEach(function (list) {
+      list.classList.add("is-in");
+    });
+  }
 })();
