@@ -45,21 +45,28 @@
       body.appendChild(el("p", "product-purpose", product.purpose));
     }
     if (product.sports && product.sports.length) {
-      body.appendChild(
-        el("p", "product-sports", "Подходит для " + product.sports.join(", ") + ".")
-      );
+      var list = el("ul", "sports-pills");
+      product.sports.forEach(function (sport) {
+        list.appendChild(el("li", "", sport));
+      });
+      body.appendChild(list);
     }
 
+    var actions = el("div", "product-actions");
     if (product.orderable) {
-      var actions = el("div", "product-actions");
       var btn = el("button", "btn btn-primary", "Заказать");
       btn.type = "button";
       btn.addEventListener("click", function () {
         openOrder(product, 1);
       });
       actions.appendChild(btn);
-      body.appendChild(actions);
+    } else {
+      var soon = el("button", "btn btn-soon", "Скоро в продаже");
+      soon.type = "button";
+      soon.disabled = true;
+      actions.appendChild(soon);
     }
+    body.appendChild(actions);
 
     var details = document.createElement("details");
     details.className = "fine-print";
