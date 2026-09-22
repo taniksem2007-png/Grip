@@ -107,23 +107,25 @@ a {
 
 .grip-peaks b {
   display: block;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-color: transparent transparent currentColor;
-}
-
-.grip-peaks b:nth-child(1) {
-  border-width: 0 0.075em 0.16em;
+  width: 0.15em;
+  height: 0.16em;
+  border: 0;
+  background: currentColor;
+  margin: 0;
+  clip-path: polygon(44% 0, 70% 40%, 100% 97%, 72% 100%, 38% 96%, 0 100%, 22% 50%);
 }
 
 .grip-peaks b:nth-child(2) {
-  border-width: 0 0.08em 0.2em;
+  width: 0.16em;
+  height: 0.2em;
   margin: 0 -0.012em;
+  clip-path: polygon(54% 0, 76% 38%, 100% 100%, 64% 96%, 28% 100%, 0 97%, 26% 46%);
 }
 
 .grip-peaks b:nth-child(3) {
-  border-width: 0 0.07em 0.14em;
+  width: 0.14em;
+  height: 0.14em;
+  clip-path: polygon(47% 0, 72% 42%, 100% 96%, 58% 100%, 22% 97%, 0 100%, 20% 48%);
 }
 
 .brand .grip-mark {
