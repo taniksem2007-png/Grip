@@ -171,14 +171,14 @@ a {
   position: relative;
   height: auto;
   min-height: 0;
-  aspect-ratio: 16 / 9;
-  max-height: 72vh;
+  aspect-ratio: 4 / 3;
+  max-height: 78vh;
   margin: 12px auto 48px;
   overflow: hidden;
   border: 3px solid var(--ink);
   background-color: #8ec3da;
   background-image: linear-gradient(180deg, rgba(20, 16, 12, 0.02), rgba(20, 16, 12, 0.18) 70%, rgba(20, 16, 12, 0.32)), url("../images/hero-poster.png");
-  background-position: center 55%;
+  background-position: center 60%;
   background-size: cover;
   background-repeat: no-repeat;
   color: var(--cream);
