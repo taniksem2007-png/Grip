@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Irish+Grover&family=Manrope:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=17" />
+    <link rel="stylesheet" href="css/styles.css?v=18" />
   </head>
   <body>
     <p class="notice-bar">
@@ -57,7 +57,7 @@
           <h2>Заказ оптом</h2>
           <p>
             Клубам, залам, секциям и магазинам считаем цену индивидуально — готового оптового прайса нет.
-            Напишите, сколько нужно и для кого, обсудим сроки и стоимость.
+            Напишите, сколько нужно и для кого, обсудим сроки и стоимость. Если хочется свою цену — тоже напишите, посмотрим.
           </p>
           <a class="btn btn-light" href="mailto:hi@grip-pro.ru?subject=Оптовый заказ Grip">Написать на hi@grip-pro.ru</a>
         </div>
@@ -95,20 +95,26 @@
               <button type="button" class="btn" data-qty-plus aria-label="Больше">+</button>
             </div>
           </div>
-          <label>Имя <input id="order-name" name="name" required autocomplete="name" /></label>
-          <label>Телефон <input id="order-phone" name="phone" required autocomplete="tel" /></label>
-          <label>Почта <input id="order-email" name="email" type="email" required autocomplete="email" /></label>
-          <label>Город <input id="order-city" name="city" required /></label>
-          <label>Комментарий <textarea id="order-comment" rows="3" placeholder="удобное время, самовывоз или доставка"></textarea></label>
+          <p class="wholesale-qty-note" id="wholesale-qty-note" hidden>
+            Такое количество уже идёт как оптовый заказ. Напишите на почту — сколько нужно и для кого, обсудим сроки и цену.
+          </p>
+          <div id="order-retail-fields">
+            <label>Имя <input id="order-name" name="name" required autocomplete="name" /></label>
+            <label>Телефон <input id="order-phone" name="phone" required autocomplete="tel" /></label>
+            <label>Почта <input id="order-email" name="email" type="email" required autocomplete="email" /></label>
+            <label>Город <input id="order-city" name="city" required /></label>
+            <label>Комментарий <textarea id="order-comment" rows="3" placeholder="удобный пункт СДЭК или пожелания по отправке"></textarea></label>
+          </div>
           <div class="modal-actions">
-            <button class="btn btn-primary" type="submit">Отправить заявку</button>
+            <button class="btn btn-primary" id="order-submit" type="submit">Отправить заявку</button>
+            <a class="btn btn-primary" id="wholesale-qty-mail" hidden href="mailto:hi@grip-pro.ru?subject=Оптовый заказ Grip">Написать на почту</a>
             <button class="btn" type="button" data-close-modal>Закрыть</button>
           </div>
         </form>
       </div>
     </div>
 
-    <script src="js/products.js?v=14"></script>
-    <script src="js/app.js?v=16"></script>
+    <script src="js/products.js?v=15"></script>
+    <script src="js/app.js?v=17"></script>
   </body>
 </html>

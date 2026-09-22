@@ -449,8 +449,22 @@ a {
 
 .product-actions {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
   margin-bottom: 18px;
+}
+
+.ozon-link {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.4;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(35, 23, 15, 0.35);
+}
+
+.ozon-link:hover {
+  border-bottom-color: var(--ink);
 }
 
 .btn {
@@ -600,6 +614,18 @@ a {
   gap: 12px;
 }
 
+#order-retail-fields {
+  display: grid;
+  gap: 12px;
+}
+
+#order-retail-fields[hidden],
+#order-submit[hidden],
+#wholesale-qty-mail[hidden],
+.wholesale-qty-note[hidden] {
+  display: none !important;
+}
+
 label {
   display: grid;
   gap: 6px;
@@ -643,6 +669,13 @@ textarea {
 .qty-row button {
   width: 40px;
   height: 40px;
+}
+
+.wholesale-qty-note {
+  margin: 0;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.45;
 }
 
 .modal-actions {

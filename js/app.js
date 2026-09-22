@@ -1,11 +1,16 @@
 (function () {
   var MAIL = "hi@grip-pro.ru";
+  var RETAIL_MAX = 30;
   var catalog = document.getElementById("catalog-list");
   var modal = document.getElementById("order-modal");
   var form = document.getElementById("order-form");
   var title = document.getElementById("order-product-title");
   var qtyInput = document.getElementById("order-qty");
   var productIdInput = document.getElementById("order-product-id");
+  var wholesaleNote = document.getElementById("wholesale-qty-note");
+  var wholesaleMail = document.getElementById("wholesale-qty-mail");
+  var retailFields = document.getElementById("order-retail-fields");
+  var submitBtn = document.getElementById("order-submit");
 
   function el(tag, className, text) {
     var node = document.createElement(tag);
@@ -122,6 +127,13 @@
       soon.disabled = true;
       actions.appendChild(soon);
     }
+    if (product.ozonUrl) {
+      var ozon = el("a", "ozon-link", "На Ozon — можно заказать поштучно");
+      ozon.href = product.ozonUrl;
+      ozon.target = "_blank";
+      ozon.rel = "noopener noreferrer";
+      actions.appendChild(ozon);
+    }
     body.appendChild(actions);
 
     var details = document.createElement("details");
@@ -139,13 +151,40 @@
     return card;
   }
 
+  function currentQty() {
+    return Math.min(999, Math.max(1, parseInt(qtyInput.value, 10) || 1));
+  }
+
+  function setRetailRequired(on) {
+    retailFields.querySelectorAll("input, textarea").forEach(function (field) {
+      if (field.id === "order-comment") return;
+      field.required = on;
+    });
+  }
+
+  function syncQtyState() {
+    var qty = currentQty();
+    qtyInput.value = String(qty);
+    var wholesale = qty > RETAIL_MAX;
+    wholesaleNote.hidden = !wholesale;
+    wholesaleMail.hidden = !wholesale;
+    retailFields.hidden = wholesale;
+    submitBtn.hidden = wholesale;
+    setRetailRequired(!wholesale);
+  }
+
   function openOrder(product, qty) {
     title.textContent = product.name + " · " + product.volume;
     productIdInput.value = product.id;
     qtyInput.value = String(qty || 1);
+    syncQtyState();
     modal.hidden = false;
     document.body.classList.add("modal-open");
-    document.getElementById("order-name").focus();
+    if (!retailFields.hidden) {
+      document.getElementById("order-name").focus();
+    } else {
+      qtyInput.focus();
+    }
   }
 
   function closeOrder() {
@@ -154,8 +193,8 @@
   }
 
   function changeQty(delta) {
-    var next = Math.max(1, (parseInt(qtyInput.value, 10) || 1) + delta);
-    qtyInput.value = String(next);
+    qtyInput.value = String(currentQty() + delta);
+    syncQtyState();
   }
 
   document.querySelectorAll("[data-close-modal]").forEach(function (node) {
@@ -168,6 +207,8 @@
   document.querySelector("[data-qty-plus]").addEventListener("click", function () {
     changeQty(1);
   });
+  qtyInput.addEventListener("input", syncQtyState);
+  qtyInput.addEventListener("change", syncQtyState);
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && !modal.hidden) closeOrder();
@@ -175,10 +216,14 @@
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
+    var qty = currentQty();
+    if (qty > RETAIL_MAX) {
+      syncQtyState();
+      return;
+    }
     var product = (window.GRIP_PRODUCTS || []).find(function (item) {
       return item.id === productIdInput.value;
     });
-    var qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
     var name = document.getElementById("order-name").value.trim();
     var phone = document.getElementById("order-phone").value.trim();
     var email = document.getElementById("order-email").value.trim();
