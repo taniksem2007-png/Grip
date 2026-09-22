@@ -3,8 +3,8 @@
    1. Скопируйте весь блок { ... } ниже.
    2. Вставьте его после текущей карточки, через запятую.
    3. Поменяйте id (уникальный, латиницей), name, volume, short, purpose.
-   4. Положите фото в папку images/ и укажите путь в image.
-      Пока фото нет — оставьте product-placeholder.png
+   4. Положите фото в папку images/ и перечислите их в images: [{ src, alt }, ...].
+      Пока фото нет — оставьте product-placeholder.png несколько раз, слайдер уже готов.
    5. Сохраните файл, залейте на GitHub (git add . ; git commit ; git push).
    ========================================================= */
 
@@ -16,6 +16,11 @@ window.GRIP_PRODUCTS = [
     badge: "Первый продукт Grip",
     image: "images/product-placeholder.png",
     imageAlt: "Фото тюбика появится позже",
+    images: [
+      { src: "images/product-placeholder.png", alt: "Жидкая магнезия Grip, кадр 1" },
+      { src: "images/product-placeholder.png", alt: "Жидкая магнезия Grip, кадр 2" },
+      { src: "images/product-placeholder.png", alt: "Жидкая магнезия Grip, кадр 3" }
+    ],
     photoPending: true,
     short: "Магнезия жидкая спортивная",
     purpose:

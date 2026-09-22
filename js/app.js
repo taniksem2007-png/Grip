@@ -22,15 +22,71 @@
     });
   }
 
+  function bindGallery(media, slides) {
+    var gallery = el("div", "gallery");
+    var track = el("div", "gallery-track");
+    slides.forEach(function (slide) {
+      var img = document.createElement("img");
+      img.src = slide.src;
+      img.alt = slide.alt || "";
+      track.appendChild(img);
+    });
+    gallery.appendChild(track);
+    media.appendChild(gallery);
+    if (slides.length < 2) return;
+
+    var index = 0;
+    function go(next) {
+      index = (next + slides.length) % slides.length;
+      track.style.transform = "translateX(" + (-index * 100) + "%)";
+      dots.forEach(function (dot, i) {
+        dot.className = i === index ? "is-on" : "";
+      });
+    }
+
+    var prev = el("button", "gallery-btn prev", "‹");
+    prev.type = "button";
+    prev.setAttribute("aria-label", "Предыдущее фото");
+    prev.addEventListener("click", function () { go(index - 1); });
+    var next = el("button", "gallery-btn next", "›");
+    next.type = "button";
+    next.setAttribute("aria-label", "Следующее фото");
+    next.addEventListener("click", function () { go(index + 1); });
+    media.appendChild(prev);
+    media.appendChild(next);
+
+    var dotsWrap = el("div", "gallery-dots");
+    var dots = slides.map(function (_, i) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", "Фото " + (i + 1));
+      if (i === 0) dot.className = "is-on";
+      dot.addEventListener("click", function () { go(i); });
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+    media.appendChild(dotsWrap);
+
+    var startX = 0;
+    gallery.addEventListener("touchstart", function (event) {
+      startX = event.changedTouches[0].clientX;
+    }, { passive: true });
+    gallery.addEventListener("touchend", function (event) {
+      var dx = event.changedTouches[0].clientX - startX;
+      if (dx > 40) go(index - 1);
+      if (dx < -40) go(index + 1);
+    }, { passive: true });
+  }
+
   function renderCard(product) {
     var card = el("article", "product-card");
     card.id = product.id;
 
     var media = el("div", "product-media");
-    var img = document.createElement("img");
-    img.src = product.image;
-    img.alt = product.imageAlt || product.name;
-    media.appendChild(img);
+    var slides = product.images && product.images.length
+      ? product.images
+      : [{ src: product.image, alt: product.imageAlt || product.name }];
+    bindGallery(media, slides);
     if (product.photoPending) {
       media.appendChild(el("span", "photo-note", "Фото товара появится здесь"));
     }
