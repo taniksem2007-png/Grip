@@ -264,6 +264,8 @@ a {
 .catalog {
   display: grid;
   gap: 28px;
+  min-height: 50vh;
+  overflow-anchor: none;
 }
 
 .product-card {
@@ -518,6 +520,7 @@ a {
   color: var(--cream);
   border: 3px solid var(--ink);
   padding: 40px;
+  overflow-anchor: none;
 }
 
 .wholesale p {

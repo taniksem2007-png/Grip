@@ -209,7 +209,11 @@
   });
 
   document.getElementById("year").textContent = String(new Date().getFullYear());
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   renderCatalog();
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
 
   if ("IntersectionObserver" in window) {
     var pillObserver = new IntersectionObserver(
