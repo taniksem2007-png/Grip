@@ -260,6 +260,15 @@
     window.scrollTo(0, 0);
   }
 
+  var deliveryFold = document.querySelector(".delivery-fold");
+  function openDeliveryIfNeeded() {
+    if (deliveryFold && window.location.hash === "#delivery") {
+      deliveryFold.open = true;
+    }
+  }
+  openDeliveryIfNeeded();
+  window.addEventListener("hashchange", openDeliveryIfNeeded);
+
   if ("IntersectionObserver" in window) {
     var pillObserver = new IntersectionObserver(
       function (entries) {

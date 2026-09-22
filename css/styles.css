@@ -227,6 +227,13 @@ a {
   padding: 20px 0 72px;
 }
 
+#delivery,
+#wholesale,
+#contacts,
+#catalog {
+  scroll-margin-top: 92px;
+}
+
 .section-head {
   display: flex;
   justify-content: space-between;
@@ -237,6 +244,7 @@ a {
 
 .section-head h2,
 .wholesale h2,
+.delivery-fold h2,
 .contacts h2 {
   margin: 0;
   font-family: Fraunces, Georgia, serif;
@@ -550,6 +558,53 @@ a {
   overflow-wrap: anywhere;
 }
 
+.delivery-fold {
+  border: 3px solid var(--ink);
+  background: var(--paper-2);
+  overflow-anchor: none;
+}
+
+.delivery-fold summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 28px;
+}
+
+.delivery-fold summary::-webkit-details-marker {
+  display: none;
+}
+
+.delivery-fold summary::after {
+  content: "+";
+  flex: none;
+  color: var(--rust);
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.delivery-fold[open] summary::after {
+  content: "–";
+}
+
+.delivery-fold-body {
+  padding: 0 28px 28px;
+  max-width: 38em;
+}
+
+.delivery-fold-body p {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.delivery-fold-body p:last-child {
+  margin-bottom: 0;
+}
+
 .contacts {
   display: grid;
   gap: 10px;
@@ -758,6 +813,12 @@ body.modal-open {
 
   .wholesale {
     padding: 24px;
+  }
+
+  .delivery-fold summary,
+  .delivery-fold-body {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .wholesale .btn {
