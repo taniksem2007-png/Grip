@@ -668,7 +668,37 @@ body.modal-open {
   }
 
   .hero-copy {
-    padding: 40px 20px 28px;
+    padding: 18px 16px 0;
+    animation: none;
+    transform: none;
+  }
+
+  .hero {
+    overflow: visible;
+    margin-bottom: 7.5rem;
+    background-image: url("../images/hero-poster.png?v=10");
+  }
+
+  .hero .grip-mark,
+  .hero h1 {
+    font-size: clamp(48px, 15vw, 72px);
+  }
+
+  .hero h1 {
+    margin-bottom: 0;
+  }
+
+  .hero p {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top: 14px;
+    padding: 0 2px;
+    color: var(--ink);
+    text-shadow: none;
+    font-size: 16px;
+    max-width: none;
   }
 
   .product-card,
